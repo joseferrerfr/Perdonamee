@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perdon</title>
+    <style>
+        body {
+            background-color: #f4f4f4; /* Cambio de fondo a gris claro */
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .bg-white {
+            background-color: #fff;
+        }
+
+        .w-64 {
+            width: 16rem;
+        }
+
+        .h-64 {
+            height: 16rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .my-4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .space-x-4 > * + * {
+            margin-left: 1rem;
+        }
+
+        .bg-green-500 {
+            background-color: #34D399;
+        }
+
+        .bg-red-500 {
+            background-color: #EF4444;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .rounded {
+            border-radius: 0.375rem;
+        }
+
+        #messageBox {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col items-center p-4 bg-white">
+        <img src="SoyEse.jpg" alt="" class="w-64 h-64">
+        <h1 class="text-2xl font-bold my-4">¿Me Perdonas Por Favor?</h1>
+        <div class="flex space-x-4">
+            <button id="yesBtn" class="bg-green-500 text-white font-bold py-2 px-4 rounded">Sí</button>
+            <button id="noBtn" class="bg-red-500 text-white font-bold py-2 px-4 rounded">No</button>
+        </div>
+        <div id="messageBox" class="p-4 bg-green-500 text-white font-bold my-4 rounded">
+            Graciasss, Yo sabía que me perdonarías :)
+        </div>
+        <button id="showMessageBtn"></button> <!-- Botón oculto -->
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const showMessageBtn = document.getElementById('showMessageBtn');
+        const messageBox = document.getElementById('messageBox');
+        let counter = 0;
+        let scale = 1;
+
+        noBtn.addEventListener('click', function() {
+            const texts = [
+                "¿Estás segura?",
+                "¿Segura de verdad?",
+                "¿Realmente estás segura?",
+                "¿Segura al 100%?",
+                "¿Estás decidida?",
+                "¿Segura de tu decisión?",
+                "¿Absolutamente segura?",
+                "¿No tienes dudas?",
+                "¿Segura de lo que quieres?",
+                "¿Estás convencida?",
+                "¿Estás segura de tu elección?",
+                "¿Segura de tu respuesta?",
+                "¿Estás segura de tu decisión?",
+                "¿No te arrepentirás?",
+                "¿Estás completamente decidida?",
+                "¿Estás convencida de tu respuesta?",
+                "¿Estás completamente segura?",
+                "¿Segura de tu determinación?",
+                "¿Estás convencida de ello?",
+                "¿No hay vuelta atrás?",
+                "¿Estás decidida a decir eso?",
+                "¿Estás absolutamente segura de tu elección?",
+                "¿No te vas a retractar?",
+                "¿Estás cien por ciento segura?",
+                "¿Segura de tus sentimientos?",
+                "¿Absolutamente convencida?",
+                "¿Estás segura de tus intenciones?",
+                "¿Estás completamente decidida?",
+                "¿Estás segura de lo que estás diciendo?",
+                "¿Segura de tu decisión final?",
+                "¿No tienes ninguna duda?",
+                "¿Estás completamente segura de tu respuesta?",
+                "¿Absolutamente segura de tu decisión?",
+                "¿Estás decidida en tu elección?",
+                "¿No hay posibilidad de cambio?",
+                "¿Estás segura de querer eso?",
+                "¿Estás completamente segura de ello?",
+                "¿Estás convencida de lo que dices?",
+                "¿No te estás arrepintiendo?",
+                "¿Estás segura de tus emociones?",
+                "¿Estás realmente decidida?",
+                "¿No hay nada que te haga dudar?",
+                "¿Estás segura de lo que estás pensando?",
+                "¿Estás completamente segura de tu decisión?",
+                "¿Estás cien por ciento decidida?",
+                "¿Segura de tu respuesta final?",
+                "¿Estás absolutamente convencida?",
+                "¿Segura de lo que quieres hacer?",
+                "¿Estás completamente segura de ello?"
+            ];
+            noBtn.innerHTML = texts[counter % texts.length];
+            counter++;
+
+            // Movimiento del botón rojo
+            noBtn.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+
+            // Escalado del botón verde
+            scale += 0.1;
+            yesBtn.style.transform = `scale(${scale})`;
+
+            // Agregar las variables faltantes
+            const showMessageBtn = document.getElementById('showMessageBtn');
+            const messageBox = document.getElementById('messageBox');
+            let counter2 = 0;
+
+            showMessageBtn.addEventListener('click', function() {
+                messageBox.style.display = 'block';
+            });
+        });
+
+        yesBtn.addEventListener('click', function() {
+            messageBox.style.display = 'block';
+            yesBtn.style.transform = 'scale(1)';
+        });
+
+        showMessageBtn.addEventListener('click', function() {
+            messageBox.style.display = 'block';
+            yesBtn.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
